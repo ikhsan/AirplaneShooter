@@ -6,23 +6,23 @@
 //  Copyright (c) 2014 Ikhsan Assaat. All rights reserved.
 //
 
-#import "IXNMainScene.h"
+#import "MainScene.h"
 
 #import <CoreMotion/CoreMotion.h>
+#import <AVFoundation/AVFoundation.h>
 #import "helper.h"
 
-@interface IXNMainScene () <UIAccelerometerDelegate, SKPhysicsContactDelegate>
+@interface MainScene () <UIAccelerometerDelegate, SKPhysicsContactDelegate>
 
 @property (nonatomic) CGRect screenRect;
 @property (nonatomic) double currentMaxAccelX;
 @property (nonatomic) double currentMaxAccelY;
 
 @property (strong, nonatomic) CMMotionManager *motionManager;
+
 @property (strong, nonatomic) SKSpriteNode *plane;
 @property (strong, nonatomic) SKSpriteNode *planeShadow;
 @property (strong, nonatomic) SKSpriteNode *propeller;
-
-@property (strong, nonatomic) SKEmitterNode *fireTrail;
 @property (strong, nonatomic) NSArray *smokeTrails;
 
 @property (strong, nonatomic) NSMutableArray *explosionTextures;
@@ -31,7 +31,7 @@
 
 @end
 
-@implementation IXNMainScene
+@implementation MainScene
 
 - (id)initWithSize:(CGSize)size
 {
@@ -51,6 +51,38 @@
     // add environments (enemies & clouds)
     [self addEnvironments];
     
+    // start motion manager
+    [self.motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:^(CMAccelerometerData *accelerometerData, NSError *error) {
+        if (error) NSLog(@"error : %@", [error localizedDescription]);
+        
+        [self outputAccelerationData:accelerometerData.acceleration];
+    }];
+    
+    return self;
+}
+
+- (void)addPlaneToScene
+{
+    // adding the airplane
+    [self addChild:self.plane];
+    
+    // adding the shadow
+    [self addChild:self.planeShadow];
+    
+    // adding the airplane's propeller
+    [self addChild:self.propeller];
+    
+    // adding the smoke trails
+    for (SKNode *node in self.smokeTrails)
+        [self addChild:node];
+    
+    // add propeller sound
+    SKAction *propellerSound = [SKAction playSoundFileNamed:@"propeller.wav" waitForCompletion:YES];
+    [self.plane runAction:[SKAction repeatActionForever:propellerSound]];
+}
+
+- (void)addEnvironments
+{
     // add explosions
     SKTextureAtlas *explosionAtlas = [SKTextureAtlas atlasNamed:@"Explosion"];
     NSArray *textureNames = [explosionAtlas textureNames];
@@ -69,41 +101,11 @@
         [self.cloudsTextures addObject:texture];
     }
     
-    // start motion manager
-    [self.motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:^(CMAccelerometerData *accelerometerData, NSError *error) {
-        if (error) NSLog(@"error : %@", [error localizedDescription]);
-        
-        [self outputAccelerationData:accelerometerData.acceleration];
-    }];
-    
     // physics
     self.physicsWorld.gravity = CGVectorMake(0, 0);
     self.physicsWorld.contactDelegate = self;
     
-    return self;
-}
-
-- (void)addPlaneToScene
-{
-    // adding the airplane
-    [self addChild:self.plane];
-    
-    // adding the shadow
-    [self addChild:self.planeShadow];
-    
-    // adding the airplane's propeller
-    [self addChild:self.propeller];
-    
-    // adding the fire trail
-    [self addChild:self.fireTrail];
-    
-    // adding the smoke trails
-    for (SKNode *node in self.smokeTrails)
-        [self addChild:node];
-}
-
-- (void)addEnvironments
-{
+    //  add enemies and clouds
     SKAction *wait = [SKAction waitForDuration:1];
     SKAction *callEnemies = [SKAction runBlock:^{
         [self createEnemies];
@@ -141,7 +143,6 @@
     if (!_planeShadow)
     {
         CGPoint p = shadowPosition(self.plane.position);
-        
         _planeShadow = [self nodeWithImageName:@"PLANE 8 SHADOW" scale:.6 position:p zPosition:1];
     }
     
@@ -156,10 +157,7 @@
         
         _propeller = [self nodeWithImageName:@"PLANE PROPELLER 1" scale:.2 position:p zPosition:1];
         
-        NSArray *textures = @[
-                              [SKTexture textureWithImageNamed:@"PLANE PROPELLER 1"],
-                              [SKTexture textureWithImageNamed:@"PLANE PROPELLER 2"]
-                              ];
+        NSArray *textures = @[[SKTexture textureWithImageNamed:@"PLANE PROPELLER 1"], [SKTexture textureWithImageNamed:@"PLANE PROPELLER 2"]];
         
         SKAction *spin = [SKAction animateWithTextures:textures timePerFrame:.1];
         SKAction *spinForever = [SKAction repeatActionForever:spin];
@@ -169,29 +167,15 @@
     return _propeller;
 }
 
-- (SKEmitterNode *)fireTrail
-{
-    if (!_fireTrail)
-    {
-        NSString *firePath = [[NSBundle mainBundle] pathForResource:@"trail" ofType:@"sks"];
-        _fireTrail = [NSKeyedUnarchiver unarchiveObjectWithFile:firePath];
-        _fireTrail.zPosition = 2;
-        _fireTrail.position = trailPosition(self.plane.position, self.plane.size);
-    }
-    
-    return _fireTrail;
-}
-
 - (NSArray *)smokeTrails
 {
     if (!_smokeTrails)
     {
         NSString *smokePath = [[NSBundle mainBundle] pathForResource:@"trail" ofType:@"sks"];
         
-        _smokeTrails = @[
+        _smokeTrails = @[[NSKeyedUnarchiver unarchiveObjectWithFile:smokePath],
                          [NSKeyedUnarchiver unarchiveObjectWithFile:smokePath],
-                         [NSKeyedUnarchiver unarchiveObjectWithFile:smokePath]
-                         ];
+                         [NSKeyedUnarchiver unarchiveObjectWithFile:smokePath]];
         
         [_smokeTrails enumerateObjectsUsingBlock:^(SKNode *node, NSUInteger idx, BOOL *stop) {
             node.position = smokePosition(self.plane.position, self.plane.size, idx);
@@ -240,7 +224,6 @@
     
     self.propeller.position = propellerPosition(self.plane.position, self.plane.size, offset);
     
-    self.fireTrail.position = trailPosition(self.plane.position, self.plane.size);
     [self.smokeTrails enumerateObjectsUsingBlock:^(SKNode *node, NSUInteger idx, BOOL *stop) {
         node.position = smokePosition(self.plane.position, self.plane.size, idx);
     }];
@@ -281,16 +264,8 @@
     CGFloat width = CGRectGetWidth(self.screenRect);
     
     CGPoint p1 = CGPointMake(ixn_random(size.width, width - (size.width * 2)), height + 80.0);
-    CGPoint p2 = CGPointMake(
-                             ixn_random(size.width, width - (size.width * 2)),
-                             ixn_random(size.height, width / 2)
-                             );
-    
-    CGPoint p3 = CGPointMake(
-                             ixn_random(0, p2.y),
-                             ixn_random(width / 2, width - size.height)
-                             );
-    
+    CGPoint p2 = CGPointMake(ixn_random(size.width, width - (size.width * 2)), ixn_random(size.height, width / 2));
+    CGPoint p3 = CGPointMake(ixn_random(0, p2.y), ixn_random(width / 2, width - size.height));
     CGPoint p4 = CGPointMake(ixn_random(size.width, width - (size.width * 2)), -100.0);
     
     CGPathMoveToPoint(path, NULL, p1.x, p1.y);
@@ -308,70 +283,13 @@
     
     int randomYAxix = ixn_random(0, self.screenRect.size.height);
     cloud.position = CGPointMake(self.screenRect.size.height + cloud.size.height / 2, randomYAxix);
-    cloud.zPosition = 1;
+    cloud.zPosition = ixn_random(0, 3);
     int randomTimeCloud = ixn_random(9, 19);
     
     SKAction *move =[SKAction moveTo:CGPointMake(-cloud.size.height, randomYAxix) duration:randomTimeCloud];
     SKAction *remove = [SKAction removeFromParent];
     [cloud runAction:[SKAction sequence:@[move,remove]]];
     [self addChild:cloud];
-    
-}
-
-#pragma mark - Interaction methods
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    CGPoint location = self.plane.position;
-    
-    SKSpriteNode *bullet = [SKSpriteNode spriteNodeWithImageNamed:@"B 2.png"];
-    bullet.position = CGPointMake(location.x, location.y + (self.plane.size.height / 2));
-    bullet.zPosition = 1;
-    bullet.scale = 0.8;
-    
-    bullet.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:bullet.size];
-    bullet.physicsBody.dynamic = NO;
-    bullet.physicsBody.categoryBitMask = bulletCategory;
-    bullet.physicsBody.contactTestBitMask = enemyCategory;
-    bullet.physicsBody.collisionBitMask = 0;
-    
-    SKAction *action = [SKAction moveToY:self.frame.size.height + bullet.size.height duration:2];
-    SKAction *remove = [SKAction removeFromParent];
-    [bullet runAction:[SKAction sequence:@[action,remove]]];
-    
-    [self addChild:bullet];
-}
-
-- (void)update:(CFTimeInterval)currentTime
-{
-    float maxX = CGRectGetWidth(self.screenRect) - (self.plane.size.width / 2);
-    float minX = (self.plane.size.width / 2);
-    
-    float maxY = CGRectGetHeight(self.screenRect) - (self.plane.size.height / 2);
-    float minY = (self.plane.size.height / 2);
-    
-    float newX = 0;
-    float newY = 0;
-    
-    if (self.currentMaxAccelX > TiltConstant)
-    {
-        self.plane.texture = [SKTexture textureWithImageNamed:@"PLANE 8 R.png"];
-    }
-    else if (self.currentMaxAccelX < -TiltConstant)
-    {
-        self.plane.texture = [SKTexture textureWithImageNamed:@"PLANE 8 L.png"];
-    }
-    else
-    {
-        self.plane.texture = [SKTexture textureWithImageNamed:@"PLANE 8 N.png"];
-    }
-    
-    newX = self.currentMaxAccelX * 10;
-    newY = 6.0 + self.currentMaxAccelY * 10;
-    
-    newX = MIN(MAX(newX+_plane.position.x,minX),maxX);
-    newY = MIN(MAX(newY+_plane.position.y,minY),maxY);
-    [self setPlanesPosition:CGPointMake(newX, newY)];
 }
 
 #pragma mark - Collision detection delegate methods
@@ -403,7 +321,8 @@
         
         SKAction *explosionAction = [SKAction animateWithTextures:_explosionTextures timePerFrame:0.07];
         SKAction *remove = [SKAction removeFromParent];
-        [explosion runAction:[SKAction sequence:@[explosionAction,remove]]];
+        SKAction *explodeSound = [SKAction playSoundFileNamed:@"explosion.wav" waitForCompletion:NO];
+        [explosion runAction:[SKAction sequence:@[explodeSound, explosionAction,remove]]];
         
         // remove from scene
         SKNode *projectile = (contact.bodyA.categoryBitMask & bulletCategory) ? contact.bodyA.node : contact.bodyB.node;
@@ -411,6 +330,63 @@
         [projectile runAction:[SKAction removeFromParent]];
         [enemy runAction:[SKAction removeFromParent]];
     }
+}
+
+#pragma mark - Interaction methods
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    CGPoint location = self.plane.position;
+    
+    SKSpriteNode *bullet = [SKSpriteNode spriteNodeWithImageNamed:@"B 2.png"];
+    bullet.position = CGPointMake(location.x, location.y + (self.plane.size.height / 2));
+    bullet.zPosition = 1;
+    bullet.scale = 0.8;
+    
+    bullet.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:bullet.size];
+    bullet.physicsBody.dynamic = NO;
+    bullet.physicsBody.categoryBitMask = bulletCategory;
+    bullet.physicsBody.contactTestBitMask = enemyCategory;
+    bullet.physicsBody.collisionBitMask = 0;
+    
+    SKAction *action = [SKAction moveToY:self.frame.size.height + bullet.size.height duration:2];
+    SKAction *remove = [SKAction removeFromParent];
+    SKAction *gunSound = [SKAction playSoundFileNamed:@"gun.wav" waitForCompletion:NO];
+    [bullet runAction:[SKAction sequence:@[gunSound, action, remove]]];
+    
+    [self addChild:bullet];
+}
+
+- (void)update:(CFTimeInterval)currentTime
+{
+    float maxX = CGRectGetWidth(self.screenRect) - (self.plane.size.width / 2);
+    float minX = (self.plane.size.width / 2);
+    
+    float maxY = CGRectGetHeight(self.screenRect) - (self.plane.size.height / 2);
+    float minY = (self.plane.size.height / 2);
+    
+    float newX = 0;
+    float newY = 0;
+    
+    if (self.currentMaxAccelX > TiltConstant)
+    {
+        self.plane.texture = [SKTexture textureWithImageNamed:@"PLANE 8 R.png"];
+    }
+    else if (self.currentMaxAccelX < -TiltConstant)
+    {
+        self.plane.texture = [SKTexture textureWithImageNamed:@"PLANE 8 L.png"];
+    }
+    else
+    {
+        self.plane.texture = [SKTexture textureWithImageNamed:@"PLANE 8 N.png"];
+    }
+    
+    newX = self.currentMaxAccelX * 10;
+    newY = 4.0 + self.currentMaxAccelY * 10;
+    
+    newX = MIN(MAX(newX+_plane.position.x,minX),maxX);
+    newY = MIN(MAX(newY+_plane.position.y,minY),maxY);
+    [self setPlanesPosition:CGPointMake(newX, newY)];
 }
 
 @end

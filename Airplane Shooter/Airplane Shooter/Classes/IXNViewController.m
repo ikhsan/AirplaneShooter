@@ -9,7 +9,7 @@
 #import "IXNViewController.h"
 
 #import <SpriteKit/SpriteKit.h>
-#import "IXNMainScene.h"
+#import "MainScene.h"
 
 @implementation IXNViewController
 
@@ -24,7 +24,7 @@
     view.showsNodeCount = YES;
     view.showsDrawCount = YES;
     
-    SKScene *scene = [IXNMainScene sceneWithSize:view.bounds.size];
+    SKScene *scene = [MainScene sceneWithSize:view.bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
     // play!

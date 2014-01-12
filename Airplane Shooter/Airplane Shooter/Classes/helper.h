@@ -24,13 +24,10 @@ CGPoint propellerPosition(CGPoint planePosition, CGSize planeSize, CGFloat offse
     return CGPointMake(planePosition.x + offset, planePosition.y - 5.0 + (planeSize.height / 2));
 }
 
-CGPoint trailPosition(CGPoint planePosition, CGSize planeSize)
-{
-    return CGPointMake(planePosition.x, planePosition.y - (planeSize.height / 2));
-}
-
 CGPoint smokePosition(CGPoint planePosition, CGSize planeSize, int idx)
 {
+    if (idx == 2) return CGPointMake(planePosition.x, planePosition.y - (planeSize.height / 2));
+    
     CGFloat wing = (planeSize.width / 2) - 10.0;
     CGFloat offset = (idx == 0)? wing : -wing;
     return CGPointMake(planePosition.x + offset, planePosition.y);
