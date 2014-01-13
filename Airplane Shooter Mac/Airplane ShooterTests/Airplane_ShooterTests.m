@@ -58,25 +58,6 @@
     res = hid_get_product_string(madcatz, wstr, MAX_STR);
     printf("Product: %ls\n\n", wstr);
 }
-
-- (void)testRead
-{
-    // Read requested state
-//	res = hid_read(madcatz, buf, 65);
-    
-	if (res < 0)
-		printf("Unable to read()\n");
-    
-	// Print out the returned buffer.
-	for (int i = 0; i < res; i++)
-		printf("buf[%d]: %d\n", i, buf[i]);
-}
-
-- (void)testElements
-{
-    IOHIDDeviceRef
-    IOHIDDeviceCopyMatchingElements(<#IOHIDDeviceRef device#>, <#CFDictionaryRef matching#>, <#IOOptionBits options#>)
-}
     
 @end
 
