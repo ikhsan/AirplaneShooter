@@ -27,6 +27,8 @@ const static CGFloat PlaneSpeed = 0.2;
 @property (strong, nonatomic) NSMutableArray *explosionTextures;
 @property (strong, nonatomic) NSMutableArray *cloudsTextures;
 
+@property (strong, nonatomic) HIDJoystick *joystick;
+
 @end
 
 @implementation MainScene
@@ -53,7 +55,8 @@ const static CGFloat PlaneSpeed = 0.2;
     // listen to joysticks
     if ([HIDJoystick isConnected])
     {
-        [[HIDJoystick createWithDelegate:self] listen];
+        self.joystick = [HIDJoystick createWithDelegate:self];
+        [self.joystick listen];
     }
     
     return self;
@@ -298,6 +301,8 @@ const static CGFloat PlaneSpeed = 0.2;
         SKAction *explodeSound = [SKAction playSoundFileNamed:@"explosion.wav" waitForCompletion:NO];
         [explosion runAction:[SKAction sequence:@[explodeSound, explosionAction,remove]]];
         
+        if (self.joystick) [self.joystick led:LEDEventBurst];
+        
         // remove from scene
         SKNode *projectile = (contact.bodyA.categoryBitMask & bulletCategory) ? contact.bodyA.node : contact.bodyB.node;
         SKNode *enemy = (contact.bodyA.categoryBitMask & bulletCategory) ? contact.bodyB.node : contact.bodyA.node;
@@ -396,6 +401,8 @@ const static CGFloat PlaneSpeed = 0.2;
     SKAction *gunSound = [SKAction playSoundFileNamed:@"gun.wav" waitForCompletion:NO];
     [bullet runAction:[SKAction sequence:@[gunSound, action, remove]]];
     
+    if (self.joystick) [self.joystick led:LEDEventFlash];
+    
     [self addChild:bullet];
 }
 
@@ -414,7 +421,7 @@ const static CGFloat PlaneSpeed = 0.2;
         case KeyEventPressedArrowLeft:
             self.currentMaxAccelX = -PlaneSpeed;
             break;
-        case KeyEventReleasedArrow:
+        case KeyEventReleased:
             if (self.currentMaxAccelX != 0) self.currentMaxAccelX = 0;
             if (self.currentMaxAccelY != 0) self.currentMaxAccelY = 0;
             break;

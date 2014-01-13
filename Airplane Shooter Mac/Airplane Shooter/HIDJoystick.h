@@ -13,13 +13,22 @@ typedef enum {
     KeyEventPressedArrowRight,
     KeyEventPressedArrowDown,
     KeyEventPressedArrowLeft,
-    KeyEventReleasedArrow,
-    KeyEventReleasedArrowUp,
-    KeyEventReleasedArrowRight,
-    KeyEventReleasedArrowDown,
-    KeyEventReleasedArrowLeft,
-    KeyEventPressedX
+    KeyEventPressedX,
+    KeyEventPressedY,
+    KeyEventPressedA,
+    KeyEventPressedB,
+    KeyEventPressedKick,
+    KeyEventPressedBack,
+    KeyEventPressedXBOX,
+    KeyEventPressedStart,
+    KeyEventReleased
 } KeyEvent;
+
+typedef enum {
+    LEDEventFlash,
+    LEDEventBurst,
+    LEDEventAllBlinking
+} LEDEvent;
 
 @class HIDJoystick;
 
@@ -34,8 +43,11 @@ typedef enum {
 
 @property (nonatomic, assign) id<HIDJoystickDelegate> delegate;
 
-+ (instancetype)createWithDelegate:(id <HIDJoystickDelegate>)delegate;
 + (BOOL)isConnected;
+
++ (instancetype)createWithDelegate:(id <HIDJoystickDelegate>)delegate;
 - (void)listen;
+
+- (void)led:(LEDEvent)eventType;
 
 @end
