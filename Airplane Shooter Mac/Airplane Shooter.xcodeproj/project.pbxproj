@@ -48,6 +48,12 @@
 		464227EE18835E7B0093D92A /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = 464227E818835E7B0093D92A /* 9.png */; };
 		464227EF18835E7B0093D92A /* 10.png in Resources */ = {isa = PBXBuildFile; fileRef = 464227E918835E7B0093D92A /* 10.png */; };
 		464227F018835E7B0093D92A /* 11.png in Resources */ = {isa = PBXBuildFile; fileRef = 464227EA18835E7B0093D92A /* 11.png */; };
+		464227F4188372730093D92A /* hid.c in Sources */ = {isa = PBXBuildFile; fileRef = 464227F3188372730093D92A /* hid.c */; };
+		464227F61883729C0093D92A /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 464227F51883729C0093D92A /* IOKit.framework */; };
+		464227F8188372B10093D92A /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 464227F7188372B10093D92A /* CoreFoundation.framework */; };
+		464227F9188374C10093D92A /* hid.c in Sources */ = {isa = PBXBuildFile; fileRef = 464227F3188372730093D92A /* hid.c */; };
+		464227FA188375620093D92A /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 464227F51883729C0093D92A /* IOKit.framework */; };
+		464227FD188382390093D92A /* HIDJoystick.m in Sources */ = {isa = PBXBuildFile; fileRef = 464227FC188382390093D92A /* HIDJoystick.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +118,12 @@
 		464227E818835E7B0093D92A /* 9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 9.png; path = ../Explosion.atlas/9.png; sourceTree = "<group>"; };
 		464227E918835E7B0093D92A /* 10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 10.png; path = ../Explosion.atlas/10.png; sourceTree = "<group>"; };
 		464227EA18835E7B0093D92A /* 11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 11.png; path = ../Explosion.atlas/11.png; sourceTree = "<group>"; };
+		464227F2188372690093D92A /* hidapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hidapi.h; sourceTree = "<group>"; };
+		464227F3188372730093D92A /* hid.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hid.c; sourceTree = "<group>"; };
+		464227F51883729C0093D92A /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		464227F7188372B10093D92A /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		464227FB188382390093D92A /* HIDJoystick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HIDJoystick.h; sourceTree = "<group>"; };
+		464227FC188382390093D92A /* HIDJoystick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HIDJoystick.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +131,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				464227F8188372B10093D92A /* CoreFoundation.framework in Frameworks */,
+				464227F61883729C0093D92A /* IOKit.framework in Frameworks */,
 				4642278218834F810093D92A /* SpriteKit.framework in Frameworks */,
 				463F1D2418832ABB0005550E /* Cocoa.framework in Frameworks */,
 			);
@@ -128,6 +142,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				464227FA188375620093D92A /* IOKit.framework in Frameworks */,
 				463F1D4418832ABB0005550E /* Cocoa.framework in Frameworks */,
 				463F1D4318832ABB0005550E /* XCTest.framework in Frameworks */,
 			);
@@ -158,6 +173,8 @@
 		463F1D2218832ABB0005550E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				464227F7188372B10093D92A /* CoreFoundation.framework */,
+				464227F51883729C0093D92A /* IOKit.framework */,
 				4642278118834F810093D92A /* SpriteKit.framework */,
 				463F1D2318832ABB0005550E /* Cocoa.framework */,
 				463F1D4218832ABB0005550E /* XCTest.framework */,
@@ -179,6 +196,7 @@
 		463F1D2918832ABB0005550E /* Airplane Shooter */ = {
 			isa = PBXGroup;
 			children = (
+				464227F11883725D0093D92A /* hidapi */,
 				463F1D3518832ABB0005550E /* AppDelegate.h */,
 				463F1D3618832ABB0005550E /* AppDelegate.m */,
 				4642278318834FCD0093D92A /* MainWindow.h */,
@@ -186,6 +204,8 @@
 				4642278C188350990093D92A /* MainScene.h */,
 				4642278D188350990093D92A /* MainScene.m */,
 				4642278A188350770093D92A /* helper.h */,
+				464227FB188382390093D92A /* HIDJoystick.h */,
+				464227FC188382390093D92A /* HIDJoystick.m */,
 				463F1D3818832ABB0005550E /* MainMenu.xib */,
 				463F1D3B18832ABB0005550E /* Images.xcassets */,
 				464227C71883575E0093D92A /* Resources */,
@@ -274,6 +294,15 @@
 			);
 			name = Resources;
 			path = "../../Airplane Shooter/Airplane Shooter";
+			sourceTree = "<group>";
+		};
+		464227F11883725D0093D92A /* hidapi */ = {
+			isa = PBXGroup;
+			children = (
+				464227F2188372690093D92A /* hidapi.h */,
+				464227F3188372730093D92A /* hid.c */,
+			);
+			name = hidapi;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -401,9 +430,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				464227F4188372730093D92A /* hid.c in Sources */,
 				463F1D3718832ABB0005550E /* AppDelegate.m in Sources */,
 				4642278E188350990093D92A /* MainScene.m in Sources */,
 				463F1D3018832ABB0005550E /* main.m in Sources */,
+				464227FD188382390093D92A /* HIDJoystick.m in Sources */,
 				4642278518834FCD0093D92A /* MainWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -413,6 +444,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				463F1D4E18832ABB0005550E /* Airplane_ShooterTests.m in Sources */,
+				464227F9188374C10093D92A /* hid.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,11 +8,12 @@
 
 #import "MainScene.h"
 #import "helper.h"
+#import "HIDJoystick.h"
 
 const static CGFloat PlaneScale = 0.6;
 const static CGFloat PlaneSpeed = 0.2;
 
-@interface MainScene () <SKPhysicsContactDelegate>
+@interface MainScene () <SKPhysicsContactDelegate, HIDJoystickDelegate>
 
 @property (nonatomic) CGRect screenRect;
 @property (nonatomic) double currentMaxAccelX;
@@ -48,6 +49,12 @@ const static CGFloat PlaneSpeed = 0.2;
     
     // add environments (enemies & clouds)
     [self addEnvironments];
+    
+    // listen to joysticks
+    if ([HIDJoystick isConnected])
+    {
+        [[HIDJoystick createWithDelegate:self] listen];
+    }
     
     return self;
 }
@@ -390,6 +397,33 @@ const static CGFloat PlaneSpeed = 0.2;
     [bullet runAction:[SKAction sequence:@[gunSound, action, remove]]];
     
     [self addChild:bullet];
+}
+
+- (void)hid:(HIDJoystick *)hid keyEvent:(KeyEvent)event
+{
+    switch (event) {
+        case KeyEventPressedArrowUp:
+            self.currentMaxAccelY = PlaneSpeed;
+            break;
+        case KeyEventPressedArrowRight:
+            self.currentMaxAccelX = PlaneSpeed;
+            break;
+        case KeyEventPressedArrowDown:
+            self.currentMaxAccelY = -PlaneSpeed;
+            break;
+        case KeyEventPressedArrowLeft:
+            self.currentMaxAccelX = -PlaneSpeed;
+            break;
+        case KeyEventReleasedArrow:
+            if (self.currentMaxAccelX != 0) self.currentMaxAccelX = 0;
+            if (self.currentMaxAccelY != 0) self.currentMaxAccelY = 0;
+            break;
+        case KeyEventPressedX:
+            [self planeTargetFire];
+            break;
+            
+        default: break;
+    }
 }
 
 - (void)update:(CFTimeInterval)currentTime
