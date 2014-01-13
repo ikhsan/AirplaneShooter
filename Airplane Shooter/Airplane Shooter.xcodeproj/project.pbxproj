@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		464227DA1883580C0093D92A /* SMOKE TRAIL.png in Resources */ = {isa = PBXBuildFile; fileRef = 464227D91883580C0093D92A /* SMOKE TRAIL.png */; };
 		4659E4AC18832496003C1165 /* airPlanesBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 4659E49D18832496003C1165 /* airPlanesBackground.png */; };
 		4659E4AD18832496003C1165 /* B 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4659E49E18832496003C1165 /* B 2.png */; };
 		4659E4AE18832496003C1165 /* PLANE 1 N.png in Resources */ = {isa = PBXBuildFile; fileRef = 4659E49F18832496003C1165 /* PLANE 1 N.png */; };
@@ -53,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		464227D91883580C0093D92A /* SMOKE TRAIL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SMOKE TRAIL.png"; sourceTree = "<group>"; };
 		4659E49D18832496003C1165 /* airPlanesBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = airPlanesBackground.png; sourceTree = "<group>"; };
 		4659E49E18832496003C1165 /* B 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "B 2.png"; sourceTree = "<group>"; };
 		4659E49F18832496003C1165 /* PLANE 1 N.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLANE 1 N.png"; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 		4659E49C18832496003C1165 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				464227D91883580C0093D92A /* SMOKE TRAIL.png */,
 				4659E49D18832496003C1165 /* airPlanesBackground.png */,
 				4659E49E18832496003C1165 /* B 2.png */,
 				4659E49F18832496003C1165 /* PLANE 1 N.png */,
@@ -342,6 +345,7 @@
 				4659E4B918832496003C1165 /* propeller.wav in Resources */,
 				4659E4B018832496003C1165 /* PLANE 8 L.png in Resources */,
 				4659E4AE18832496003C1165 /* PLANE 1 N.png in Resources */,
+				464227DA1883580C0093D92A /* SMOKE TRAIL.png in Resources */,
 				4659E4B718832496003C1165 /* flyby.wav in Resources */,
 				4659E4B318832496003C1165 /* PLANE 8 SHADOW.png in Resources */,
 			);

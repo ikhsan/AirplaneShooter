@@ -1,0 +1,632 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		463F1D2418832ABB0005550E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463F1D2318832ABB0005550E /* Cocoa.framework */; };
+		463F1D2E18832ABB0005550E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 463F1D2C18832ABB0005550E /* InfoPlist.strings */; };
+		463F1D3018832ABB0005550E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 463F1D2F18832ABB0005550E /* main.m */; };
+		463F1D3418832ABB0005550E /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 463F1D3218832ABB0005550E /* Credits.rtf */; };
+		463F1D3718832ABB0005550E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 463F1D3618832ABB0005550E /* AppDelegate.m */; };
+		463F1D3A18832ABB0005550E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 463F1D3818832ABB0005550E /* MainMenu.xib */; };
+		463F1D3C18832ABB0005550E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 463F1D3B18832ABB0005550E /* Images.xcassets */; };
+		463F1D4318832ABB0005550E /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463F1D4218832ABB0005550E /* XCTest.framework */; };
+		463F1D4418832ABB0005550E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463F1D2318832ABB0005550E /* Cocoa.framework */; };
+		463F1D4C18832ABB0005550E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 463F1D4A18832ABB0005550E /* InfoPlist.strings */; };
+		463F1D4E18832ABB0005550E /* Airplane_ShooterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 463F1D4D18832ABB0005550E /* Airplane_ShooterTests.m */; };
+		4642278218834F810093D92A /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4642278118834F810093D92A /* SpriteKit.framework */; };
+		4642278518834FCD0093D92A /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4642278418834FCD0093D92A /* MainWindow.m */; };
+		4642278B188350770093D92A /* helper.h in Resources */ = {isa = PBXBuildFile; fileRef = 4642278A188350770093D92A /* helper.h */; };
+		4642278E188350990093D92A /* MainScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 4642278D188350990093D92A /* MainScene.m */; };
+		464227C81883575E0093D92A /* airPlanesBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 464227B41883575E0093D92A /* airPlanesBackground.png */; };
+		464227C91883575E0093D92A /* B 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 464227B51883575E0093D92A /* B 2.png */; };
+		464227CA1883575E0093D92A /* PLANE 1 N.png in Resources */ = {isa = PBXBuildFile; fileRef = 464227B61883575E0093D92A /* PLANE 1 N.png */; };
+		464227CB1883575E0093D92A /* PLANE 2 N.png in Resources */ = {isa = PBXBuildFile; fileRef = 464227B71883575E0093D92A /* PLANE 2 N.png */; };
+		464227CC1883575E0093D92A /* PLANE 8 L.png in Resources */ = {isa = PBXBuildFile; fileRef = 464227B81883575E0093D92A /* PLANE 8 L.png */; };
+		464227CD1883575E0093D92A /* PLANE 8 N.png in Resources */ = {isa = PBXBuildFile; fileRef = 464227B91883575E0093D92A /* PLANE 8 N.png */; };
+		464227CE1883575E0093D92A /* PLANE 8 R.png in Resources */ = {isa = PBXBuildFile; fileRef = 464227BA1883575E0093D92A /* PLANE 8 R.png */; };
+		464227CF1883575E0093D92A /* PLANE 8 SHADOW.png in Resources */ = {isa = PBXBuildFile; fileRef = 464227BB1883575E0093D92A /* PLANE 8 SHADOW.png */; };
+		464227D01883575E0093D92A /* PLANE PROPELLER 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 464227BC1883575E0093D92A /* PLANE PROPELLER 1.png */; };
+		464227D11883575E0093D92A /* PLANE PROPELLER 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 464227BD1883575E0093D92A /* PLANE PROPELLER 2.png */; };
+		464227D21883575E0093D92A /* explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 464227BF1883575E0093D92A /* explosion.wav */; };
+		464227D31883575E0093D92A /* flyby.wav in Resources */ = {isa = PBXBuildFile; fileRef = 464227C01883575E0093D92A /* flyby.wav */; };
+		464227D41883575E0093D92A /* gun.wav in Resources */ = {isa = PBXBuildFile; fileRef = 464227C11883575E0093D92A /* gun.wav */; };
+		464227D51883575E0093D92A /* propeller.wav in Resources */ = {isa = PBXBuildFile; fileRef = 464227C21883575E0093D92A /* propeller.wav */; };
+		464227D81883575E0093D92A /* trail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 464227C61883575E0093D92A /* trail.sks */; };
+		464227DC188358220093D92A /* SMOKE TRAIL.png in Resources */ = {isa = PBXBuildFile; fileRef = 464227DB188358220093D92A /* SMOKE TRAIL.png */; };
+		464227E118835BC10093D92A /* cloud1.png in Resources */ = {isa = PBXBuildFile; fileRef = 464227DD18835BC10093D92A /* cloud1.png */; };
+		464227E218835BC10093D92A /* cloud2.png in Resources */ = {isa = PBXBuildFile; fileRef = 464227DE18835BC10093D92A /* cloud2.png */; };
+		464227E318835BC10093D92A /* cloud3.png in Resources */ = {isa = PBXBuildFile; fileRef = 464227DF18835BC10093D92A /* cloud3.png */; };
+		464227E418835BC10093D92A /* cloud4.png in Resources */ = {isa = PBXBuildFile; fileRef = 464227E018835BC10093D92A /* cloud4.png */; };
+		464227EB18835E7B0093D92A /* 6.png in Resources */ = {isa = PBXBuildFile; fileRef = 464227E518835E7B0093D92A /* 6.png */; };
+		464227EC18835E7B0093D92A /* 7.png in Resources */ = {isa = PBXBuildFile; fileRef = 464227E618835E7B0093D92A /* 7.png */; };
+		464227ED18835E7B0093D92A /* 8.png in Resources */ = {isa = PBXBuildFile; fileRef = 464227E718835E7B0093D92A /* 8.png */; };
+		464227EE18835E7B0093D92A /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = 464227E818835E7B0093D92A /* 9.png */; };
+		464227EF18835E7B0093D92A /* 10.png in Resources */ = {isa = PBXBuildFile; fileRef = 464227E918835E7B0093D92A /* 10.png */; };
+		464227F018835E7B0093D92A /* 11.png in Resources */ = {isa = PBXBuildFile; fileRef = 464227EA18835E7B0093D92A /* 11.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		463F1D4518832ABB0005550E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 463F1D1818832ABB0005550E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 463F1D1F18832ABB0005550E;
+			remoteInfo = "Airplane Shooter";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		463F1D2018832ABB0005550E /* Airplane Shooter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Airplane Shooter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		463F1D2318832ABB0005550E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		463F1D2618832ABB0005550E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		463F1D2718832ABB0005550E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		463F1D2818832ABB0005550E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		463F1D2B18832ABB0005550E /* Airplane Shooter-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Airplane Shooter-Info.plist"; sourceTree = "<group>"; };
+		463F1D2D18832ABB0005550E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		463F1D2F18832ABB0005550E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		463F1D3118832ABB0005550E /* Airplane Shooter-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Airplane Shooter-Prefix.pch"; sourceTree = "<group>"; };
+		463F1D3318832ABB0005550E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		463F1D3518832ABB0005550E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		463F1D3618832ABB0005550E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		463F1D3918832ABB0005550E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		463F1D3B18832ABB0005550E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		463F1D4118832ABB0005550E /* Airplane ShooterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Airplane ShooterTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		463F1D4218832ABB0005550E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		463F1D4918832ABB0005550E /* Airplane ShooterTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Airplane ShooterTests-Info.plist"; sourceTree = "<group>"; };
+		463F1D4B18832ABB0005550E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		463F1D4D18832ABB0005550E /* Airplane_ShooterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Airplane_ShooterTests.m; sourceTree = "<group>"; };
+		4642278118834F810093D92A /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		4642278318834FCD0093D92A /* MainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindow.h; sourceTree = "<group>"; };
+		4642278418834FCD0093D92A /* MainWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindow.m; sourceTree = "<group>"; };
+		4642278A188350770093D92A /* helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = helper.h; path = "../../Airplane Shooter/Airplane Shooter/Classes/helper.h"; sourceTree = "<group>"; };
+		4642278C188350990093D92A /* MainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainScene.h; sourceTree = "<group>"; };
+		4642278D188350990093D92A /* MainScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainScene.m; sourceTree = "<group>"; };
+		464227B41883575E0093D92A /* airPlanesBackground.png */ = {isa = PBXFileReference; lastKnownFileType = file; path = airPlanesBackground.png; sourceTree = "<group>"; };
+		464227B51883575E0093D92A /* B 2.png */ = {isa = PBXFileReference; lastKnownFileType = file; path = "B 2.png"; sourceTree = "<group>"; };
+		464227B61883575E0093D92A /* PLANE 1 N.png */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PLANE 1 N.png"; sourceTree = "<group>"; };
+		464227B71883575E0093D92A /* PLANE 2 N.png */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PLANE 2 N.png"; sourceTree = "<group>"; };
+		464227B81883575E0093D92A /* PLANE 8 L.png */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PLANE 8 L.png"; sourceTree = "<group>"; };
+		464227B91883575E0093D92A /* PLANE 8 N.png */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PLANE 8 N.png"; sourceTree = "<group>"; };
+		464227BA1883575E0093D92A /* PLANE 8 R.png */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PLANE 8 R.png"; sourceTree = "<group>"; };
+		464227BB1883575E0093D92A /* PLANE 8 SHADOW.png */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PLANE 8 SHADOW.png"; sourceTree = "<group>"; };
+		464227BC1883575E0093D92A /* PLANE PROPELLER 1.png */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PLANE PROPELLER 1.png"; sourceTree = "<group>"; };
+		464227BD1883575E0093D92A /* PLANE PROPELLER 2.png */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PLANE PROPELLER 2.png"; sourceTree = "<group>"; };
+		464227BF1883575E0093D92A /* explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = file; path = explosion.wav; sourceTree = "<group>"; };
+		464227C01883575E0093D92A /* flyby.wav */ = {isa = PBXFileReference; lastKnownFileType = file; path = flyby.wav; sourceTree = "<group>"; };
+		464227C11883575E0093D92A /* gun.wav */ = {isa = PBXFileReference; lastKnownFileType = file; path = gun.wav; sourceTree = "<group>"; };
+		464227C21883575E0093D92A /* propeller.wav */ = {isa = PBXFileReference; lastKnownFileType = file; path = propeller.wav; sourceTree = "<group>"; };
+		464227C61883575E0093D92A /* trail.sks */ = {isa = PBXFileReference; lastKnownFileType = file; name = trail.sks; path = Resources/trail.sks; sourceTree = "<group>"; };
+		464227DB188358220093D92A /* SMOKE TRAIL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SMOKE TRAIL.png"; sourceTree = "<group>"; };
+		464227DD18835BC10093D92A /* cloud1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cloud1.png; path = ../Clouds.atlas/cloud1.png; sourceTree = "<group>"; };
+		464227DE18835BC10093D92A /* cloud2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cloud2.png; path = ../Clouds.atlas/cloud2.png; sourceTree = "<group>"; };
+		464227DF18835BC10093D92A /* cloud3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cloud3.png; path = ../Clouds.atlas/cloud3.png; sourceTree = "<group>"; };
+		464227E018835BC10093D92A /* cloud4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cloud4.png; path = ../Clouds.atlas/cloud4.png; sourceTree = "<group>"; };
+		464227E518835E7B0093D92A /* 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 6.png; path = ../Explosion.atlas/6.png; sourceTree = "<group>"; };
+		464227E618835E7B0093D92A /* 7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 7.png; path = ../Explosion.atlas/7.png; sourceTree = "<group>"; };
+		464227E718835E7B0093D92A /* 8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 8.png; path = ../Explosion.atlas/8.png; sourceTree = "<group>"; };
+		464227E818835E7B0093D92A /* 9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 9.png; path = ../Explosion.atlas/9.png; sourceTree = "<group>"; };
+		464227E918835E7B0093D92A /* 10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 10.png; path = ../Explosion.atlas/10.png; sourceTree = "<group>"; };
+		464227EA18835E7B0093D92A /* 11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 11.png; path = ../Explosion.atlas/11.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		463F1D1D18832ABB0005550E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4642278218834F810093D92A /* SpriteKit.framework in Frameworks */,
+				463F1D2418832ABB0005550E /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		463F1D3E18832ABB0005550E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				463F1D4418832ABB0005550E /* Cocoa.framework in Frameworks */,
+				463F1D4318832ABB0005550E /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		463F1D1718832ABB0005550E = {
+			isa = PBXGroup;
+			children = (
+				463F1D2918832ABB0005550E /* Airplane Shooter */,
+				463F1D4718832ABB0005550E /* Airplane ShooterTests */,
+				463F1D2218832ABB0005550E /* Frameworks */,
+				463F1D2118832ABB0005550E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		463F1D2118832ABB0005550E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				463F1D2018832ABB0005550E /* Airplane Shooter.app */,
+				463F1D4118832ABB0005550E /* Airplane ShooterTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		463F1D2218832ABB0005550E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4642278118834F810093D92A /* SpriteKit.framework */,
+				463F1D2318832ABB0005550E /* Cocoa.framework */,
+				463F1D4218832ABB0005550E /* XCTest.framework */,
+				463F1D2518832ABB0005550E /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		463F1D2518832ABB0005550E /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				463F1D2618832ABB0005550E /* AppKit.framework */,
+				463F1D2718832ABB0005550E /* CoreData.framework */,
+				463F1D2818832ABB0005550E /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		463F1D2918832ABB0005550E /* Airplane Shooter */ = {
+			isa = PBXGroup;
+			children = (
+				463F1D3518832ABB0005550E /* AppDelegate.h */,
+				463F1D3618832ABB0005550E /* AppDelegate.m */,
+				4642278318834FCD0093D92A /* MainWindow.h */,
+				4642278418834FCD0093D92A /* MainWindow.m */,
+				4642278C188350990093D92A /* MainScene.h */,
+				4642278D188350990093D92A /* MainScene.m */,
+				4642278A188350770093D92A /* helper.h */,
+				463F1D3818832ABB0005550E /* MainMenu.xib */,
+				463F1D3B18832ABB0005550E /* Images.xcassets */,
+				464227C71883575E0093D92A /* Resources */,
+				463F1D2A18832ABB0005550E /* Other Resources */,
+			);
+			path = "Airplane Shooter";
+			sourceTree = "<group>";
+		};
+		463F1D2A18832ABB0005550E /* Other Resources */ = {
+			isa = PBXGroup;
+			children = (
+				463F1D2B18832ABB0005550E /* Airplane Shooter-Info.plist */,
+				463F1D2C18832ABB0005550E /* InfoPlist.strings */,
+				463F1D2F18832ABB0005550E /* main.m */,
+				463F1D3118832ABB0005550E /* Airplane Shooter-Prefix.pch */,
+				463F1D3218832ABB0005550E /* Credits.rtf */,
+			);
+			name = "Other Resources";
+			sourceTree = "<group>";
+		};
+		463F1D4718832ABB0005550E /* Airplane ShooterTests */ = {
+			isa = PBXGroup;
+			children = (
+				463F1D4D18832ABB0005550E /* Airplane_ShooterTests.m */,
+				463F1D4818832ABB0005550E /* Supporting Files */,
+			);
+			path = "Airplane ShooterTests";
+			sourceTree = "<group>";
+		};
+		463F1D4818832ABB0005550E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				463F1D4918832ABB0005550E /* Airplane ShooterTests-Info.plist */,
+				463F1D4A18832ABB0005550E /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		464227BE1883575E0093D92A /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				464227DB188358220093D92A /* SMOKE TRAIL.png */,
+				464227B41883575E0093D92A /* airPlanesBackground.png */,
+				464227B51883575E0093D92A /* B 2.png */,
+				464227B61883575E0093D92A /* PLANE 1 N.png */,
+				464227B71883575E0093D92A /* PLANE 2 N.png */,
+				464227B81883575E0093D92A /* PLANE 8 L.png */,
+				464227B91883575E0093D92A /* PLANE 8 N.png */,
+				464227BA1883575E0093D92A /* PLANE 8 R.png */,
+				464227BB1883575E0093D92A /* PLANE 8 SHADOW.png */,
+				464227BC1883575E0093D92A /* PLANE PROPELLER 1.png */,
+				464227BD1883575E0093D92A /* PLANE PROPELLER 2.png */,
+				464227DD18835BC10093D92A /* cloud1.png */,
+				464227DE18835BC10093D92A /* cloud2.png */,
+				464227DF18835BC10093D92A /* cloud3.png */,
+				464227E018835BC10093D92A /* cloud4.png */,
+				464227E518835E7B0093D92A /* 6.png */,
+				464227E618835E7B0093D92A /* 7.png */,
+				464227E718835E7B0093D92A /* 8.png */,
+				464227E818835E7B0093D92A /* 9.png */,
+				464227E918835E7B0093D92A /* 10.png */,
+				464227EA18835E7B0093D92A /* 11.png */,
+			);
+			name = Images;
+			path = Resources/Images;
+			sourceTree = "<group>";
+		};
+		464227C31883575E0093D92A /* sfx */ = {
+			isa = PBXGroup;
+			children = (
+				464227BF1883575E0093D92A /* explosion.wav */,
+				464227C01883575E0093D92A /* flyby.wav */,
+				464227C11883575E0093D92A /* gun.wav */,
+				464227C21883575E0093D92A /* propeller.wav */,
+			);
+			name = sfx;
+			path = Resources/sfx;
+			sourceTree = "<group>";
+		};
+		464227C71883575E0093D92A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				464227BE1883575E0093D92A /* Images */,
+				464227C31883575E0093D92A /* sfx */,
+				464227C61883575E0093D92A /* trail.sks */,
+			);
+			name = Resources;
+			path = "../../Airplane Shooter/Airplane Shooter";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		463F1D1F18832ABB0005550E /* Airplane Shooter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 463F1D5118832ABB0005550E /* Build configuration list for PBXNativeTarget "Airplane Shooter" */;
+			buildPhases = (
+				463F1D1C18832ABB0005550E /* Sources */,
+				463F1D1D18832ABB0005550E /* Frameworks */,
+				463F1D1E18832ABB0005550E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Airplane Shooter";
+			productName = "Airplane Shooter";
+			productReference = 463F1D2018832ABB0005550E /* Airplane Shooter.app */;
+			productType = "com.apple.product-type.application";
+		};
+		463F1D4018832ABB0005550E /* Airplane ShooterTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 463F1D5418832ABB0005550E /* Build configuration list for PBXNativeTarget "Airplane ShooterTests" */;
+			buildPhases = (
+				463F1D3D18832ABB0005550E /* Sources */,
+				463F1D3E18832ABB0005550E /* Frameworks */,
+				463F1D3F18832ABB0005550E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				463F1D4618832ABB0005550E /* PBXTargetDependency */,
+			);
+			name = "Airplane ShooterTests";
+			productName = "Airplane ShooterTests";
+			productReference = 463F1D4118832ABB0005550E /* Airplane ShooterTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		463F1D1818832ABB0005550E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Ikhsan Assaat";
+				TargetAttributes = {
+					463F1D4018832ABB0005550E = {
+						TestTargetID = 463F1D1F18832ABB0005550E;
+					};
+				};
+			};
+			buildConfigurationList = 463F1D1B18832ABB0005550E /* Build configuration list for PBXProject "Airplane Shooter" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 463F1D1718832ABB0005550E;
+			productRefGroup = 463F1D2118832ABB0005550E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				463F1D1F18832ABB0005550E /* Airplane Shooter */,
+				463F1D4018832ABB0005550E /* Airplane ShooterTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		463F1D1E18832ABB0005550E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				464227EC18835E7B0093D92A /* 7.png in Resources */,
+				463F1D2E18832ABB0005550E /* InfoPlist.strings in Resources */,
+				464227E218835BC10093D92A /* cloud2.png in Resources */,
+				464227C81883575E0093D92A /* airPlanesBackground.png in Resources */,
+				464227CD1883575E0093D92A /* PLANE 8 N.png in Resources */,
+				464227D41883575E0093D92A /* gun.wav in Resources */,
+				464227D81883575E0093D92A /* trail.sks in Resources */,
+				464227EE18835E7B0093D92A /* 9.png in Resources */,
+				464227EB18835E7B0093D92A /* 6.png in Resources */,
+				463F1D3C18832ABB0005550E /* Images.xcassets in Resources */,
+				464227CB1883575E0093D92A /* PLANE 2 N.png in Resources */,
+				464227C91883575E0093D92A /* B 2.png in Resources */,
+				464227CE1883575E0093D92A /* PLANE 8 R.png in Resources */,
+				464227D11883575E0093D92A /* PLANE PROPELLER 2.png in Resources */,
+				4642278B188350770093D92A /* helper.h in Resources */,
+				463F1D3418832ABB0005550E /* Credits.rtf in Resources */,
+				464227D21883575E0093D92A /* explosion.wav in Resources */,
+				464227E118835BC10093D92A /* cloud1.png in Resources */,
+				463F1D3A18832ABB0005550E /* MainMenu.xib in Resources */,
+				464227D01883575E0093D92A /* PLANE PROPELLER 1.png in Resources */,
+				464227EF18835E7B0093D92A /* 10.png in Resources */,
+				464227D51883575E0093D92A /* propeller.wav in Resources */,
+				464227ED18835E7B0093D92A /* 8.png in Resources */,
+				464227E418835BC10093D92A /* cloud4.png in Resources */,
+				464227CC1883575E0093D92A /* PLANE 8 L.png in Resources */,
+				464227CA1883575E0093D92A /* PLANE 1 N.png in Resources */,
+				464227F018835E7B0093D92A /* 11.png in Resources */,
+				464227DC188358220093D92A /* SMOKE TRAIL.png in Resources */,
+				464227D31883575E0093D92A /* flyby.wav in Resources */,
+				464227CF1883575E0093D92A /* PLANE 8 SHADOW.png in Resources */,
+				464227E318835BC10093D92A /* cloud3.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		463F1D3F18832ABB0005550E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				463F1D4C18832ABB0005550E /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		463F1D1C18832ABB0005550E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				463F1D3718832ABB0005550E /* AppDelegate.m in Sources */,
+				4642278E188350990093D92A /* MainScene.m in Sources */,
+				463F1D3018832ABB0005550E /* main.m in Sources */,
+				4642278518834FCD0093D92A /* MainWindow.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		463F1D3D18832ABB0005550E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				463F1D4E18832ABB0005550E /* Airplane_ShooterTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		463F1D4618832ABB0005550E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 463F1D1F18832ABB0005550E /* Airplane Shooter */;
+			targetProxy = 463F1D4518832ABB0005550E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		463F1D2C18832ABB0005550E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				463F1D2D18832ABB0005550E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		463F1D3218832ABB0005550E /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				463F1D3318832ABB0005550E /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		463F1D3818832ABB0005550E /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				463F1D3918832ABB0005550E /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		463F1D4A18832ABB0005550E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				463F1D4B18832ABB0005550E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		463F1D4F18832ABB0005550E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		463F1D5018832ABB0005550E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		463F1D5218832ABB0005550E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Airplane Shooter/Airplane Shooter-Prefix.pch";
+				INFOPLIST_FILE = "Airplane Shooter/Airplane Shooter-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		463F1D5318832ABB0005550E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Airplane Shooter/Airplane Shooter-Prefix.pch";
+				INFOPLIST_FILE = "Airplane Shooter/Airplane Shooter-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		463F1D5518832ABB0005550E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Airplane Shooter.app/Contents/MacOS/Airplane Shooter";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Airplane Shooter/Airplane Shooter-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Airplane ShooterTests/Airplane ShooterTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		463F1D5618832ABB0005550E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Airplane Shooter.app/Contents/MacOS/Airplane Shooter";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Airplane Shooter/Airplane Shooter-Prefix.pch";
+				INFOPLIST_FILE = "Airplane ShooterTests/Airplane ShooterTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		463F1D1B18832ABB0005550E /* Build configuration list for PBXProject "Airplane Shooter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				463F1D4F18832ABB0005550E /* Debug */,
+				463F1D5018832ABB0005550E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		463F1D5118832ABB0005550E /* Build configuration list for PBXNativeTarget "Airplane Shooter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				463F1D5218832ABB0005550E /* Debug */,
+				463F1D5318832ABB0005550E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		463F1D5418832ABB0005550E /* Build configuration list for PBXNativeTarget "Airplane ShooterTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				463F1D5518832ABB0005550E /* Debug */,
+				463F1D5618832ABB0005550E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 463F1D1818832ABB0005550E /* Project object */;
+}

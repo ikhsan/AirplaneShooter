@@ -24,6 +24,11 @@ CGPoint propellerPosition(CGPoint planePosition, CGSize planeSize, CGFloat offse
     return CGPointMake(planePosition.x + offset, planePosition.y - 5.0 + (planeSize.height / 2));
 }
 
+CGPoint mac_propellerPosition(CGPoint planePosition, CGSize planeSize, CGFloat offset)
+{
+    return CGPointMake(planePosition.x + offset, planePosition.y - 2.0 + (planeSize.height / 2));
+}
+
 CGPoint smokePosition(CGPoint planePosition, CGSize planeSize, int idx)
 {
     if (idx == 2) return CGPointMake(planePosition.x, planePosition.y - (planeSize.height / 2));
