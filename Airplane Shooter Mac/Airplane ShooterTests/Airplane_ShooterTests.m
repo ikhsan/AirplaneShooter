@@ -58,6 +58,32 @@
     res = hid_get_product_string(madcatz, wstr, MAX_STR);
     printf("Product: %ls\n\n", wstr);
 }
+
+- (void)testRead
+{
+    // Read requested state
+//	res = hid_read(madcatz, buf, 65);
+    
+	if (res < 0)
+		printf("Unable to read()\n");
+    
+	// Print out the returned buffer.
+	for (int i = 0; i < res; i++)
+		printf("buf[%d]: %d\n", i, buf[i]);
+}
+
+- (void)testLED
+{
+    hid_set_nonblocking(madcatz, 1);
+    
+	const unsigned char kReportType = 0x01;
+	const unsigned char kReportSize = 0x03;
+	const unsigned char kReportData[kReportSize] = 	{
+        kReportType, kReportSize, 0x0D
+	};
+    
+    hid_write(madcatz, kReportData, kReportSize);
+}
     
 @end
 

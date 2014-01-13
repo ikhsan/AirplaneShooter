@@ -11,7 +11,7 @@
 #import "HIDJoystick.h"
 
 const static CGFloat PlaneScale = 0.6;
-const static CGFloat PlaneSpeed = 0.2;
+const static CGFloat PlaneSpeed = 0.3;
 
 @interface MainScene () <SKPhysicsContactDelegate, HIDJoystickDelegate>
 
@@ -26,6 +26,8 @@ const static CGFloat PlaneSpeed = 0.2;
 
 @property (strong, nonatomic) NSMutableArray *explosionTextures;
 @property (strong, nonatomic) NSMutableArray *cloudsTextures;
+
+@property (strong, nonatomic) HIDJoystick *joystick;
 
 @end
 
@@ -53,7 +55,8 @@ const static CGFloat PlaneSpeed = 0.2;
     // listen to joysticks
     if ([HIDJoystick isConnected])
     {
-        [[HIDJoystick createWithDelegate:self] listen];
+        self.joystick = [HIDJoystick createWithDelegate:self];
+        [self.joystick listen];
     }
     
     return self;
@@ -298,6 +301,8 @@ const static CGFloat PlaneSpeed = 0.2;
         SKAction *explodeSound = [SKAction playSoundFileNamed:@"explosion.wav" waitForCompletion:NO];
         [explosion runAction:[SKAction sequence:@[explodeSound, explosionAction,remove]]];
         
+        if (self.joystick) [self.joystick led:LEDEventBurst];
+        
         // remove from scene
         SKNode *projectile = (contact.bodyA.categoryBitMask & bulletCategory) ? contact.bodyA.node : contact.bodyB.node;
         SKNode *enemy = (contact.bodyA.categoryBitMask & bulletCategory) ? contact.bodyB.node : contact.bodyA.node;
@@ -396,29 +401,45 @@ const static CGFloat PlaneSpeed = 0.2;
     SKAction *gunSound = [SKAction playSoundFileNamed:@"gun.wav" waitForCompletion:NO];
     [bullet runAction:[SKAction sequence:@[gunSound, action, remove]]];
     
+    if (self.joystick) [self.joystick led:LEDEventFlash];
+    
     [self addChild:bullet];
 }
 
 - (void)hid:(HIDJoystick *)hid keyEvent:(KeyEvent)event
 {
+    int kSpeeder = 5;
     switch (event) {
         case KeyEventPressedArrowUp:
             self.currentMaxAccelY = PlaneSpeed;
             break;
+        case KeyEventPressedY:
+            self.currentMaxAccelY = PlaneSpeed*kSpeeder;
+            break;
         case KeyEventPressedArrowRight:
             self.currentMaxAccelX = PlaneSpeed;
+            break;
+        case KeyEventPressedA:
+            self.currentMaxAccelX = PlaneSpeed*kSpeeder;
             break;
         case KeyEventPressedArrowDown:
             self.currentMaxAccelY = -PlaneSpeed;
             break;
+        case KeyEventPressedX:
+            self.currentMaxAccelY = -PlaneSpeed*kSpeeder;
+            break;
         case KeyEventPressedArrowLeft:
             self.currentMaxAccelX = -PlaneSpeed;
             break;
-        case KeyEventReleasedArrow:
+        case KeyEventPressedB:
+            self.currentMaxAccelX = -PlaneSpeed*kSpeeder;
+            break;
+        case KeyEventReleased:
             if (self.currentMaxAccelX != 0) self.currentMaxAccelX = 0;
             if (self.currentMaxAccelY != 0) self.currentMaxAccelY = 0;
             break;
-        case KeyEventPressedX:
+        case KeyEventPressedKick:
+        case KeyEventPressedXBOX:
             [self planeTargetFire];
             break;
             
