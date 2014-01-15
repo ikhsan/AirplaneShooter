@@ -48,12 +48,12 @@
 		464227EE18835E7B0093D92A /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = 464227E818835E7B0093D92A /* 9.png */; };
 		464227EF18835E7B0093D92A /* 10.png in Resources */ = {isa = PBXBuildFile; fileRef = 464227E918835E7B0093D92A /* 10.png */; };
 		464227F018835E7B0093D92A /* 11.png in Resources */ = {isa = PBXBuildFile; fileRef = 464227EA18835E7B0093D92A /* 11.png */; };
-		464227F4188372730093D92A /* hid.c in Sources */ = {isa = PBXBuildFile; fileRef = 464227F3188372730093D92A /* hid.c */; };
 		464227F61883729C0093D92A /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 464227F51883729C0093D92A /* IOKit.framework */; };
 		464227F8188372B10093D92A /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 464227F7188372B10093D92A /* CoreFoundation.framework */; };
-		464227F9188374C10093D92A /* hid.c in Sources */ = {isa = PBXBuildFile; fileRef = 464227F3188372730093D92A /* hid.c */; };
 		464227FA188375620093D92A /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 464227F51883729C0093D92A /* IOKit.framework */; };
-		464227FD188382390093D92A /* HIDJoystick.m in Sources */ = {isa = PBXBuildFile; fileRef = 464227FC188382390093D92A /* HIDJoystick.m */; };
+		46EF5A481886160400FFF397 /* GameDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EF5A431886160400FFF397 /* GameDevice.m */; };
+		46EF5A491886160400FFF397 /* hidapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 46EF5A441886160400FFF397 /* hidapi.c */; };
+		46EF5A4A1886160400FFF397 /* IXNXboxDrumpad.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EF5A471886160400FFF397 /* IXNXboxDrumpad.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,21 +92,21 @@
 		4642278A188350770093D92A /* helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = helper.h; path = "../../Airplane Shooter/Airplane Shooter/Classes/helper.h"; sourceTree = "<group>"; };
 		4642278C188350990093D92A /* MainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainScene.h; sourceTree = "<group>"; };
 		4642278D188350990093D92A /* MainScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainScene.m; sourceTree = "<group>"; };
-		464227B41883575E0093D92A /* airPlanesBackground.png */ = {isa = PBXFileReference; lastKnownFileType = file; path = airPlanesBackground.png; sourceTree = "<group>"; };
-		464227B51883575E0093D92A /* B 2.png */ = {isa = PBXFileReference; lastKnownFileType = file; path = "B 2.png"; sourceTree = "<group>"; };
-		464227B61883575E0093D92A /* PLANE 1 N.png */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PLANE 1 N.png"; sourceTree = "<group>"; };
-		464227B71883575E0093D92A /* PLANE 2 N.png */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PLANE 2 N.png"; sourceTree = "<group>"; };
-		464227B81883575E0093D92A /* PLANE 8 L.png */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PLANE 8 L.png"; sourceTree = "<group>"; };
-		464227B91883575E0093D92A /* PLANE 8 N.png */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PLANE 8 N.png"; sourceTree = "<group>"; };
-		464227BA1883575E0093D92A /* PLANE 8 R.png */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PLANE 8 R.png"; sourceTree = "<group>"; };
-		464227BB1883575E0093D92A /* PLANE 8 SHADOW.png */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PLANE 8 SHADOW.png"; sourceTree = "<group>"; };
-		464227BC1883575E0093D92A /* PLANE PROPELLER 1.png */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PLANE PROPELLER 1.png"; sourceTree = "<group>"; };
-		464227BD1883575E0093D92A /* PLANE PROPELLER 2.png */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PLANE PROPELLER 2.png"; sourceTree = "<group>"; };
-		464227BF1883575E0093D92A /* explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = file; path = explosion.wav; sourceTree = "<group>"; };
-		464227C01883575E0093D92A /* flyby.wav */ = {isa = PBXFileReference; lastKnownFileType = file; path = flyby.wav; sourceTree = "<group>"; };
-		464227C11883575E0093D92A /* gun.wav */ = {isa = PBXFileReference; lastKnownFileType = file; path = gun.wav; sourceTree = "<group>"; };
-		464227C21883575E0093D92A /* propeller.wav */ = {isa = PBXFileReference; lastKnownFileType = file; path = propeller.wav; sourceTree = "<group>"; };
-		464227C61883575E0093D92A /* trail.sks */ = {isa = PBXFileReference; lastKnownFileType = file; name = trail.sks; path = Resources/trail.sks; sourceTree = "<group>"; };
+		464227B41883575E0093D92A /* airPlanesBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = airPlanesBackground.png; sourceTree = "<group>"; };
+		464227B51883575E0093D92A /* B 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "B 2.png"; sourceTree = "<group>"; };
+		464227B61883575E0093D92A /* PLANE 1 N.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLANE 1 N.png"; sourceTree = "<group>"; };
+		464227B71883575E0093D92A /* PLANE 2 N.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLANE 2 N.png"; sourceTree = "<group>"; };
+		464227B81883575E0093D92A /* PLANE 8 L.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLANE 8 L.png"; sourceTree = "<group>"; };
+		464227B91883575E0093D92A /* PLANE 8 N.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLANE 8 N.png"; sourceTree = "<group>"; };
+		464227BA1883575E0093D92A /* PLANE 8 R.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLANE 8 R.png"; sourceTree = "<group>"; };
+		464227BB1883575E0093D92A /* PLANE 8 SHADOW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLANE 8 SHADOW.png"; sourceTree = "<group>"; };
+		464227BC1883575E0093D92A /* PLANE PROPELLER 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLANE PROPELLER 1.png"; sourceTree = "<group>"; };
+		464227BD1883575E0093D92A /* PLANE PROPELLER 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLANE PROPELLER 2.png"; sourceTree = "<group>"; };
+		464227BF1883575E0093D92A /* explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explosion.wav; sourceTree = "<group>"; };
+		464227C01883575E0093D92A /* flyby.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = flyby.wav; sourceTree = "<group>"; };
+		464227C11883575E0093D92A /* gun.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gun.wav; sourceTree = "<group>"; };
+		464227C21883575E0093D92A /* propeller.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = propeller.wav; sourceTree = "<group>"; };
+		464227C61883575E0093D92A /* trail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = trail.sks; path = Resources/trail.sks; sourceTree = "<group>"; };
 		464227DB188358220093D92A /* SMOKE TRAIL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SMOKE TRAIL.png"; sourceTree = "<group>"; };
 		464227DD18835BC10093D92A /* cloud1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cloud1.png; path = ../Clouds.atlas/cloud1.png; sourceTree = "<group>"; };
 		464227DE18835BC10093D92A /* cloud2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cloud2.png; path = ../Clouds.atlas/cloud2.png; sourceTree = "<group>"; };
@@ -118,12 +118,14 @@
 		464227E818835E7B0093D92A /* 9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 9.png; path = ../Explosion.atlas/9.png; sourceTree = "<group>"; };
 		464227E918835E7B0093D92A /* 10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 10.png; path = ../Explosion.atlas/10.png; sourceTree = "<group>"; };
 		464227EA18835E7B0093D92A /* 11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 11.png; path = ../Explosion.atlas/11.png; sourceTree = "<group>"; };
-		464227F2188372690093D92A /* hidapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hidapi.h; sourceTree = "<group>"; };
-		464227F3188372730093D92A /* hid.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hid.c; sourceTree = "<group>"; };
 		464227F51883729C0093D92A /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		464227F7188372B10093D92A /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		464227FB188382390093D92A /* HIDJoystick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HIDJoystick.h; sourceTree = "<group>"; };
-		464227FC188382390093D92A /* HIDJoystick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HIDJoystick.m; sourceTree = "<group>"; };
+		46EF5A421886160400FFF397 /* GameDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameDevice.h; sourceTree = "<group>"; };
+		46EF5A431886160400FFF397 /* GameDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameDevice.m; sourceTree = "<group>"; };
+		46EF5A441886160400FFF397 /* hidapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hidapi.c; sourceTree = "<group>"; };
+		46EF5A451886160400FFF397 /* hidapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hidapi.h; sourceTree = "<group>"; };
+		46EF5A461886160400FFF397 /* IXNXboxDrumpad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IXNXboxDrumpad.h; sourceTree = "<group>"; };
+		46EF5A471886160400FFF397 /* IXNXboxDrumpad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IXNXboxDrumpad.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,7 +198,7 @@
 		463F1D2918832ABB0005550E /* Airplane Shooter */ = {
 			isa = PBXGroup;
 			children = (
-				464227F11883725D0093D92A /* hidapi */,
+				46EF5A411886160400FFF397 /* IXNXboxDrumpad */,
 				463F1D3518832ABB0005550E /* AppDelegate.h */,
 				463F1D3618832ABB0005550E /* AppDelegate.m */,
 				4642278318834FCD0093D92A /* MainWindow.h */,
@@ -204,8 +206,6 @@
 				4642278C188350990093D92A /* MainScene.h */,
 				4642278D188350990093D92A /* MainScene.m */,
 				4642278A188350770093D92A /* helper.h */,
-				464227FB188382390093D92A /* HIDJoystick.h */,
-				464227FC188382390093D92A /* HIDJoystick.m */,
 				463F1D3818832ABB0005550E /* MainMenu.xib */,
 				463F1D3B18832ABB0005550E /* Images.xcassets */,
 				464227C71883575E0093D92A /* Resources */,
@@ -296,13 +296,18 @@
 			path = "../../Airplane Shooter/Airplane Shooter";
 			sourceTree = "<group>";
 		};
-		464227F11883725D0093D92A /* hidapi */ = {
+		46EF5A411886160400FFF397 /* IXNXboxDrumpad */ = {
 			isa = PBXGroup;
 			children = (
-				464227F2188372690093D92A /* hidapi.h */,
-				464227F3188372730093D92A /* hid.c */,
+				46EF5A421886160400FFF397 /* GameDevice.h */,
+				46EF5A431886160400FFF397 /* GameDevice.m */,
+				46EF5A441886160400FFF397 /* hidapi.c */,
+				46EF5A451886160400FFF397 /* hidapi.h */,
+				46EF5A461886160400FFF397 /* IXNXboxDrumpad.h */,
+				46EF5A471886160400FFF397 /* IXNXboxDrumpad.m */,
 			);
-			name = hidapi;
+			name = IXNXboxDrumpad;
+			path = ../../IXNXBOXDrumpad/IXNXboxDrumpad;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -430,11 +435,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				464227F4188372730093D92A /* hid.c in Sources */,
+				46EF5A4A1886160400FFF397 /* IXNXboxDrumpad.m in Sources */,
+				46EF5A491886160400FFF397 /* hidapi.c in Sources */,
 				463F1D3718832ABB0005550E /* AppDelegate.m in Sources */,
 				4642278E188350990093D92A /* MainScene.m in Sources */,
 				463F1D3018832ABB0005550E /* main.m in Sources */,
-				464227FD188382390093D92A /* HIDJoystick.m in Sources */,
+				46EF5A481886160400FFF397 /* GameDevice.m in Sources */,
 				4642278518834FCD0093D92A /* MainWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -444,7 +450,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				463F1D4E18832ABB0005550E /* Airplane_ShooterTests.m in Sources */,
-				464227F9188374C10093D92A /* hid.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

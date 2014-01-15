@@ -13,6 +13,7 @@
 static const CGFloat TiltConstant = 0.05;
 static const uint8_t bulletCategory = 1;
 static const uint8_t enemyCategory = 2;
+static const uint8_t planeCategory = 3;
 
 CGPoint shadowPosition(CGPoint planePosition)
 {

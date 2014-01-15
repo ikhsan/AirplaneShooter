@@ -81,6 +81,11 @@
     [self.plane runAction:[SKAction repeatActionForever:propellerSound]];
 }
 
+- (void)removePlaneFromScene
+{
+    [
+}
+
 - (void)addEnvironments
 {
     // add explosions

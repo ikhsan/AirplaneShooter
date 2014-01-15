@@ -8,12 +8,12 @@
 
 #import "MainScene.h"
 #import "helper.h"
-#import "HIDJoystick.h"
+#import "IXNXboxDrumpad.h"
 
 const static CGFloat PlaneScale = 0.6;
 const static CGFloat PlaneSpeed = 0.2;
 
-@interface MainScene () <SKPhysicsContactDelegate, HIDJoystickDelegate>
+@interface MainScene () <SKPhysicsContactDelegate, IXNXboxDrumpadDelegate>
 
 @property (nonatomic) CGRect screenRect;
 @property (nonatomic) double currentMaxAccelX;
@@ -27,7 +27,7 @@ const static CGFloat PlaneSpeed = 0.2;
 @property (strong, nonatomic) NSMutableArray *explosionTextures;
 @property (strong, nonatomic) NSMutableArray *cloudsTextures;
 
-@property (strong, nonatomic) HIDJoystick *joystick;
+@property (strong, nonatomic) IXNXboxDrumpad *xboxDrumpad;
 
 @end
 
@@ -52,11 +52,17 @@ const static CGFloat PlaneSpeed = 0.2;
     // add environments (enemies & clouds)
     [self addEnvironments];
     
-    // listen to joysticks
-    if ([HIDJoystick isConnected])
-    {
-        self.joystick = [HIDJoystick createWithDelegate:self];
-        [self.joystick listen];
+    // use the first gamepad that's found, connect, and listen to it
+    NSArray *pads = [IXNXboxDrumpad connectedGamepads];
+    if (pads.count > 0) {
+        GameDevice *firstDevice = [IXNXboxDrumpad connectedGamepads][0];
+        IXNXboxDrumpad *thePad = [IXNXboxDrumpad drumpadWithDevice:firstDevice];
+        thePad.delegate = self;
+        self.xboxDrumpad = thePad;
+        
+        [self.xboxDrumpad triggerLEDEvent:LEDTriggerAllBlink];
+        
+        [self.xboxDrumpad listen];
     }
     
     return self;
@@ -301,7 +307,13 @@ const static CGFloat PlaneSpeed = 0.2;
         SKAction *explodeSound = [SKAction playSoundFileNamed:@"explosion.wav" waitForCompletion:NO];
         [explosion runAction:[SKAction sequence:@[explodeSound, explosionAction,remove]]];
         
-        if (self.joystick) [self.joystick led:LEDEventBurst];
+        if (self.xboxDrumpad) {
+            [self.xboxDrumpad triggerLEDEvent:LEDTriggerOn1];
+            [self.xboxDrumpad triggerLEDEvent:LEDTriggerOn2];
+            [self.xboxDrumpad triggerLEDEvent:LEDTriggerOn4];
+            [self.xboxDrumpad triggerLEDEvent:LEDTriggerOn3];
+            [self.xboxDrumpad triggerLEDEvent:LEDTriggerAllOff];
+        }
         
         // remove from scene
         SKNode *projectile = (contact.bodyA.categoryBitMask & bulletCategory) ? contact.bodyA.node : contact.bodyB.node;
@@ -401,36 +413,12 @@ const static CGFloat PlaneSpeed = 0.2;
     SKAction *gunSound = [SKAction playSoundFileNamed:@"gun.wav" waitForCompletion:NO];
     [bullet runAction:[SKAction sequence:@[gunSound, action, remove]]];
     
-    if (self.joystick) [self.joystick led:LEDEventFlash];
+    if (self.xboxDrumpad) {
+        [self.xboxDrumpad triggerLEDEvent:LEDTriggerOn1];
+        [self.xboxDrumpad triggerLEDEvent:LEDTriggerAllOff];
+    }
     
     [self addChild:bullet];
-}
-
-- (void)hid:(HIDJoystick *)hid keyEvent:(KeyEvent)event
-{
-    switch (event) {
-        case KeyEventPressedArrowUp:
-            self.currentMaxAccelY = PlaneSpeed;
-            break;
-        case KeyEventPressedArrowRight:
-            self.currentMaxAccelX = PlaneSpeed;
-            break;
-        case KeyEventPressedArrowDown:
-            self.currentMaxAccelY = -PlaneSpeed;
-            break;
-        case KeyEventPressedArrowLeft:
-            self.currentMaxAccelX = -PlaneSpeed;
-            break;
-        case KeyEventReleased:
-            if (self.currentMaxAccelX != 0) self.currentMaxAccelX = 0;
-            if (self.currentMaxAccelY != 0) self.currentMaxAccelY = 0;
-            break;
-        case KeyEventPressedX:
-            [self planeTargetFire];
-            break;
-            
-        default: break;
-    }
 }
 
 - (void)update:(CFTimeInterval)currentTime
@@ -463,6 +451,35 @@ const static CGFloat PlaneSpeed = 0.2;
     newX = MIN(MAX(newX+_plane.position.x,minX),maxX);
     newY = MIN(MAX(newY+_plane.position.y,minY),maxY);
     [self setPlanesPosition:CGPointMake(newX, newY)];
+}
+
+#pragma mark - XBOX Drum Controller Delegate
+
+- (void)xboxDrumpad:(IXNXboxDrumpad *)drumpad keyEventButton:(KeyEventButton)buttonEvent
+{
+    switch (buttonEvent) {
+        case KeyEventPressedArrowUp:
+            self.currentMaxAccelY = PlaneSpeed;
+            break;
+        case KeyEventPressedArrowRight:
+            self.currentMaxAccelX = PlaneSpeed;
+            break;
+        case KeyEventPressedArrowDown:
+            self.currentMaxAccelY = -PlaneSpeed;
+            break;
+        case KeyEventPressedArrowLeft:
+            self.currentMaxAccelX = -PlaneSpeed;
+            break;
+        case KeyEventReleased:
+            if (self.currentMaxAccelX != 0) self.currentMaxAccelX = 0;
+            if (self.currentMaxAccelY != 0) self.currentMaxAccelY = 0;
+            break;
+        case KeyEventPressedX:
+            [self planeTargetFire];
+            break;
+            
+        default: break;
+    }
 }
 
 
